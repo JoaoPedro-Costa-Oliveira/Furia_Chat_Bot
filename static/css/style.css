@@ -1,0 +1,205 @@
+/* static/css/style.css */
+:root {
+    --furia-black: #1a1a1a; /* Slightly off-black */
+    --furia-purple: #8A2BE2; /* Example Purple - Adjust if needed */
+    --furia-light-grey: #cccccc;
+    --furia-dark-grey: #333333;
+    --furia-white: #ffffff;
+    --font-main: 'Montserrat', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--furia-black);
+    color: var(--furia-light-grey);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--furia-dark-grey);
+    padding: 1rem 2rem;
+    text-align: center;
+    border-bottom: 2px solid var(--furia-purple);
+}
+
+header h1 {
+    color: var(--furia-white);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+main {
+    flex-grow: 1;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px; /* Limit content width */
+}
+
+.content-area {
+    display: grid;
+    grid-template-columns: 1fr; /* Default single column */
+    gap: 1.5rem;
+}
+
+/* Layout changes for wider screens */
+@media (min-width: 768px) {
+    .content-area {
+        grid-template-columns: 1fr 2fr; /* Match tracker left, chat right */
+    }
+    #match-tracker {
+         order: 1; /* Put tracker first */
+    }
+    #chat-container {
+         order: 2; /* Chat second */
+    }
+}
+
+
+#match-tracker, #chat-container {
+    background-color: var(--furia-dark-grey);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: var(--furia-purple);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--furia-purple);
+    padding-bottom: 0.5rem;
+}
+
+#match-info {
+    font-size: 0.95rem;
+    white-space: pre-wrap; /* Respect newlines from backend */
+    background-color: #282828;
+    padding: 10px;
+    border-radius: 4px;
+    min-height: 100px; /* Ensure some space */
+}
+
+#match-info .live {
+    color: #ff4d4d; /* Red for live */
+    font-weight: bold;
+}
+
+#match-info .final {
+    color: #4dff4d; /* Green for final */
+    font-weight: bold;
+}
+
+
+#chat-display {
+    height: 400px; /* Fixed height for chat */
+    overflow-y: auto; /* Enable scrolling */
+    border: 1px solid #444;
+    background-color: var(--furia-black);
+    padding: 10px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word; /* Prevent long words overflowing */
+}
+
+.message span {
+    display: inline-block; /* Needed for padding/border-radius */
+}
+
+.message.user {
+    background-color: var(--furia-purple);
+    color: var(--furia-white);
+    align-self: flex-end; /* Align user messages to the right */
+    border-bottom-right-radius: 3px; /* Bubble tail */
+}
+
+.message.bot {
+    background-color: #555;
+    color: var(--furia-light-grey);
+    align-self: flex-start; /* Align bot messages to the left */
+     border-bottom-left-radius: 3px; /* Bubble tail */
+}
+
+.message.fan {
+    background-color: transparent;
+    color: #aaa; /* Dimmer color for fan messages */
+    font-style: italic;
+    font-size: 0.9em;
+    align-self: center; /* Center fan messages */
+    text-align: center;
+    max-width: 100%;
+     border: 1px dashed #444;
+     padding: 5px 10px;
+}
+
+
+#input-area {
+    display: flex;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: var(--furia-white);
+    border-radius: 20px 0 0 20px;
+    outline: none;
+}
+
+#send-button {
+    padding: 10px 20px;
+    background-color: var(--furia-purple);
+    color: var(--furia-white);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0 20px 20px 0;
+    transition: background-color 0.2s ease;
+}
+
+#send-button:hover {
+    background-color: #6a1eae; /* Darker purple on hover */
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    color: #888;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--furia-dark-grey);
+}
+
+/* Scrollbar styling (optional, Webkit browsers) */
+#chat-display::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-display::-webkit-scrollbar-track {
+    background: var(--furia-black);
+}
+
+#chat-display::-webkit-scrollbar-thumb {
+    background-color: var(--furia-purple);
+    border-radius: 10px;
+    border: 2px solid var(--furia-black);
+}
