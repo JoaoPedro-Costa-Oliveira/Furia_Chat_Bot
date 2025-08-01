@@ -46,7 +46,7 @@ Este projeto foi desenvolvido utilizando **Python** com o microframework **Flask
 | | `Flask` | Microframework web para criar a aplicação e servir a página principal. |
 | **Frontend** | `HTML5` | Estruturação do conteúdo da página. |
 | | `CSS3` | Estilização para criar um design limpo e responsivo. |
-| | `JavaScript` | Responsável pela interatividade, chamadas à API e atualização dinâmica da página. |
+| | `JavaScript` | Responsável pela interatividade. |
 
 ---
 
